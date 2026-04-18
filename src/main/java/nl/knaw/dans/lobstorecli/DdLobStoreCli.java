@@ -18,7 +18,11 @@ package nl.knaw.dans.lobstorecli;
 
 import lombok.extern.slf4j.Slf4j;
 import nl.knaw.dans.lib.util.AbstractCommandLineApp;
+import nl.knaw.dans.lib.util.ClientProxyBuilder;
 import nl.knaw.dans.lib.util.PicocliVersionProvider;
+import nl.knaw.dans.lobstorecli.client.ApiClient;
+import nl.knaw.dans.lobstorecli.client.DefaultApi;
+import nl.knaw.dans.lobstorecli.command.AddCommand;
 import nl.knaw.dans.lobstorecli.config.DdLobStoreCliConfig;
 import picocli.AutoComplete.GenerateCompletion;
 import picocli.CommandLine;
@@ -40,8 +44,14 @@ public class DdLobStoreCli extends AbstractCommandLineApp<DdLobStoreCliConfig> {
 
     @Override
     public void configureCommandLine(CommandLine commandLine, DdLobStoreCliConfig config) {
-        // TODO: set up the API client, if applicable
         log.debug("Configuring command line");
-        // TODO: add options and subcommands
+        DefaultApi api = new ClientProxyBuilder<ApiClient, DefaultApi>()
+                .apiClient(new ApiClient())
+                .defaultApiCtor(DefaultApi::new)
+                .httpClient(config.getHttpClient())
+                .basePath(config.getApiUrl())
+                .build();
+
+        commandLine.addSubcommand(new AddCommand(api));
     }
 }

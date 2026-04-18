@@ -8,3 +8,5 @@ logging:
       archive: false
       timeZone: system
       currentLogFilename: ${HOME}/dd-lob-store-cli.log
+
+apiUrl: 'http://localhost:20385/'

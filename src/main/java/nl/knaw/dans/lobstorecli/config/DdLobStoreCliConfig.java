@@ -17,7 +17,20 @@
 package nl.knaw.dans.lobstorecli.config;
 
 import io.dropwizard.core.Configuration;
+import io.dropwizard.client.JerseyClientConfiguration;
+import lombok.Data;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.net.URI;
+
+@Data
 public class DdLobStoreCliConfig extends Configuration {
-  // TODO: add configuration fields
+    @Valid
+    @NotNull
+    private JerseyClientConfiguration httpClient = new JerseyClientConfiguration();
+
+    @Valid
+    @NotNull
+    private URI apiUrl;
 }
