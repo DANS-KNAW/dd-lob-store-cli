@@ -20,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nl.knaw.dans.lobstorecli.api.TransferRequestDto;
 import nl.knaw.dans.lobstorecli.api.TransferResponseDto;
+import nl.knaw.dans.lobstorecli.client.ApiException;
 import nl.knaw.dans.lobstorecli.client.DefaultApi;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
@@ -35,10 +36,10 @@ public class AddCommand implements Callable<Integer> {
     @NonNull
     private final DefaultApi api;
 
-    @Option(names = {"--sha1"}, description = "SHA-1 checksum of the file", required = true)
+    @Option(names = { "--sha1" }, description = "SHA-1 checksum of the file", required = true)
     private String sha1;
 
-    @Option(names = {"--datastation"}, description = "Shortname of the datastation", required = true)
+    @Option(names = { "--datastation" }, description = "Shortname of the datastation", required = true)
     private String datastation;
 
     @Parameters(index = "0", description = "File ID to download")
@@ -46,15 +47,26 @@ public class AddCommand implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        TransferRequestDto request = new TransferRequestDto();
-        request.setDataverseFileId(fileId);
-        request.setDatastation(datastation);
-        request.setSha1Sum(sha1);
+        try {
+            TransferRequestDto request = new TransferRequestDto();
+            request.setDataverseFileId(fileId);
+            request.setDatastation(datastation);
+            request.setSha1Sum(sha1);
 
-        log.debug("Sending add transfer request: {}", request);
-        TransferResponseDto response = api.addTransfer(request);
-        System.out.println("Transfer added with ID: " + response.getId());
+            log.debug("Sending add transfer request: {}", request);
+            TransferResponseDto response = api.addTransfer(request);
+            System.out.println("Transfer added with ID: " + response.getId());
 
+        }
+        catch (ApiException e) {
+            if (e.getCode() == 303) {
+                String location = e.getResponseHeaders().get("Location").get(0);
+                System.out.println("File already in LOB store: " + location);
+            }
+            else {
+                throw e;
+            }
+        }
         return 0;
     }
 }
