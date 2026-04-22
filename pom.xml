@@ -36,6 +36,7 @@
 
     <properties>
         <main-class>nl.knaw.dans.lobstorecli.DdLobStoreCli</main-class>
+        <dd-lob-store-api.version>0.1.0</dd-lob-store-api.version>
         <command-name>lob-store</command-name>
     </properties>
 
@@ -77,7 +78,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        <!-- Only required if this CLI connects to a OpenAPI generated service -->
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
@@ -106,11 +106,10 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
         </dependency>
-        <!-- Include OpenAPI definition as depencency, so that Maven will check for release version during release process -->
         <dependency>
             <groupId>nl.knaw.dans</groupId>
             <artifactId>dd-lob-store-api</artifactId>
-            <version>${project.version}</version>
+            <version>${dd-lob-store-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -204,7 +203,7 @@
                                 <artifactItem>
                                     <groupId>nl.knaw.dans</groupId>
                                     <artifactId>dd-lob-store-api</artifactId>
-                                    <version>${project.version}</version>
+                                    <version>${dd-lob-store-api.version}</version>
                                     <outputDirectory>${project.build.directory}/openapi</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
