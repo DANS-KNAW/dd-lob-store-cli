@@ -28,7 +28,7 @@
     <artifactId>dd-lob-store-cli</artifactId>
     <version>0.1.1-SNAPSHOT</version>
 
-    <name>Dd Lob Store Cli</name>
+    <name>DD LOB Store CLI</name>
     <url>https://github.com/DANS-KNAW/dd-lob-store-cli</url>
     <description>CLI for dd-lob-store</description>
     <inceptionYear>2026</inceptionYear>
