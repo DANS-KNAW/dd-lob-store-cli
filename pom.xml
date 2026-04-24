@@ -35,7 +35,7 @@
 
     <properties>
         <main-class>nl.knaw.dans.lobstorecli.DdLobStoreCli</main-class>
-        <dd-lob-store-api.version>0.1.1-SNAPSHOT</dd-lob-store-api.version>
+        <dd-lob-store-api.version>0.2.0</dd-lob-store-api.version>
         <command-name>lob-store</command-name>
     </properties>
 
