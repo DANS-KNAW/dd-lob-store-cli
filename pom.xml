@@ -35,7 +35,7 @@
 
     <properties>
         <main-class>nl.knaw.dans.lobstorecli.DdLobStoreCli</main-class>
-        <dd-lob-store-api.version>0.1.0</dd-lob-store-api.version>
+        <dd-lob-store-api.version>0.1.1-SNAPSHOT</dd-lob-store-api.version>
         <command-name>lob-store</command-name>
     </properties>
 
@@ -104,6 +104,11 @@
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.10.0</version>
         </dependency>
         <dependency>
             <groupId>nl.knaw.dans</groupId>

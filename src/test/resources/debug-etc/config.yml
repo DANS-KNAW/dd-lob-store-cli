@@ -11,3 +11,5 @@ logging:
       archive: false
       logFormat: "%-5p [%d{ISO8601}] [%t] %c: %m%n%rEx"
       currentLogFilename: data/dd-lob-store-cli.log
+
+apiUrl: 'http://localhost:20385/'
