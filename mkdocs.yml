@@ -22,7 +22,16 @@ repo_name: DANS-KNAW/dd-lob-store-cli
 repo_url: https://github.com/DANS-KNAW/dd-lob-store-cli
 
 nav:
-  - Manual: index.md
+  - Manual:
+      - Introduction: index.md
+      - Description: description.md
+      - Installation: installation.md
+      - Context: context.md
+  - Development:
+      - Overview: dev.md
+
+extra:
+  dd_lob_store_api: https://dans-knaw.github.io/dd-lob-store/swagger-ui/
 
 plugins:
   - markdownextradata
