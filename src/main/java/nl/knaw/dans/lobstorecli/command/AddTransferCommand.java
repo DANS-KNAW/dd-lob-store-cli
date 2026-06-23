@@ -20,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nl.knaw.dans.lobstorecli.api.TransferRequestDto;
 import nl.knaw.dans.lobstorecli.api.TransferResponseItemDto;
-import nl.knaw.dans.lobstorecli.client.ApiException;
 import nl.knaw.dans.lobstorecli.client.DefaultApi;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -37,10 +36,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-@Command(name = "add", description = "Add a file download request to the lob-store")
+@Command(name = "add-transfer", description = "Add a file download request to the lob-store")
 @Slf4j
 @RequiredArgsConstructor
-public class AddCommand implements Callable<Integer> {
+public class AddTransferCommand implements Callable<Integer> {
 
     @NonNull
     private final DefaultApi api;

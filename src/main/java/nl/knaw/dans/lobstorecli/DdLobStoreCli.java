@@ -22,9 +22,11 @@ import nl.knaw.dans.lib.util.ClientProxyBuilder;
 import nl.knaw.dans.lib.util.PicocliVersionProvider;
 import nl.knaw.dans.lobstorecli.client.ApiClient;
 import nl.knaw.dans.lobstorecli.client.DefaultApi;
-import nl.knaw.dans.lobstorecli.command.AddCommand;
+import nl.knaw.dans.lobstorecli.command.AddTransferCommand;
+import nl.knaw.dans.lobstorecli.command.GetLocationCommand;
+import nl.knaw.dans.lobstorecli.command.GetTransferByHashCommand;
+import nl.knaw.dans.lobstorecli.command.GetTransferCommand;
 import nl.knaw.dans.lobstorecli.config.DdLobStoreCliConfig;
-import picocli.AutoComplete.GenerateCompletion;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
@@ -52,6 +54,9 @@ public class DdLobStoreCli extends AbstractCommandLineApp<DdLobStoreCliConfig> {
                 .basePath(config.getApiUrl())
                 .build();
 
-        commandLine.addSubcommand(new AddCommand(api));
+        commandLine.addSubcommand(new AddTransferCommand(api));
+        commandLine.addSubcommand(new GetTransferCommand(api));
+        commandLine.addSubcommand(new GetTransferByHashCommand(api));
+        commandLine.addSubcommand(new GetLocationCommand(api));
     }
 }
