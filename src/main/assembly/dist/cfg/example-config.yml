@@ -10,3 +10,7 @@ logging:
       currentLogFilename: ${HOME}/dd-lob-store-cli.log
 
 apiUrl: 'http://localhost:20385/'
+
+httpClient:
+  connectTimeout: 30s
+  timeout: 60s
