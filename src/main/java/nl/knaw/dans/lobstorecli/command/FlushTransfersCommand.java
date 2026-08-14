@@ -41,7 +41,7 @@ public class FlushTransfersCommand implements Callable<Integer> {
         try {
             log.debug("Flushing transfers for datastation: {}", datastation);
             api.flushTransfersWithHttpInfo(datastation);
-            System.out.println("Transfers for datastation " + datastation + " successfully flushed.");
+            System.out.println("Flush request for datastation " + datastation + " transfers received.");
             return 0;
         }
         catch (ApiException e) {
