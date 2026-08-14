@@ -49,11 +49,11 @@ public class DdLobStoreCli extends AbstractCommandLineApp<DdLobStoreCliConfig> {
     public void configureCommandLine(CommandLine commandLine, DdLobStoreCliConfig config) {
         log.debug("Configuring command line");
         DefaultApi api = new ClientProxyBuilder<ApiClient, DefaultApi>()
-                .apiClient(new ApiClient())
-                .defaultApiCtor(DefaultApi::new)
-                .httpClient(config.getHttpClient())
-                .basePath(config.getApiUrl())
-                .build();
+            .apiClient(new ApiClient())
+            .defaultApiCtor(DefaultApi::new)
+            .httpClient(config.getHttpClient())
+            .basePath(config.getApiUrl())
+            .build();
 
         commandLine.addSubcommand(new AddTransferCommand(api));
         commandLine.addSubcommand(new GetTransferCommand(api));

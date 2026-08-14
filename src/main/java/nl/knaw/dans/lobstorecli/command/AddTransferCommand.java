@@ -47,25 +47,6 @@ public class AddTransferCommand implements Callable<Integer> {
     @ArgGroup(multiplicity = "1")
     private ExclusiveOptions exclusiveOptions;
 
-    private static class ExclusiveOptions {
-        @ArgGroup(exclusive = false, heading = "Single transfer options:%n")
-        private SingleTransferOptions single;
-
-        @Option(names = { "--input-file", "-i" }, description = "CSV file with columns DATASTATION, SHA1 and FILEID", required = true)
-        private Path inputFile;
-    }
-
-    private static class SingleTransferOptions {
-        @Option(names = { "--sha1" }, description = "SHA-1 checksum of the file", required = true)
-        private String sha1;
-
-        @Option(names = { "--datastation" }, description = "Shortname of the datastation", required = true)
-        private String datastation;
-
-        @Parameters(index = "0", description = "File ID to download")
-        private Long fileId;
-    }
-
     @Override
     public Integer call() throws Exception {
         List<TransferRequestDto> requests = new ArrayList<>();
@@ -121,5 +102,24 @@ public class AddTransferCommand implements Callable<Integer> {
         }
 
         return 0;
+    }
+
+    private static class ExclusiveOptions {
+        @ArgGroup(exclusive = false, heading = "Single transfer options:%n")
+        private SingleTransferOptions single;
+
+        @Option(names = { "--input-file", "-i" }, description = "CSV file with columns DATASTATION, SHA1 and FILEID", required = true)
+        private Path inputFile;
+    }
+
+    private static class SingleTransferOptions {
+        @Option(names = { "--sha1" }, description = "SHA-1 checksum of the file", required = true)
+        private String sha1;
+
+        @Option(names = { "--datastation" }, description = "Shortname of the datastation", required = true)
+        private String datastation;
+
+        @Parameters(index = "0", description = "File ID to download")
+        private Long fileId;
     }
 }

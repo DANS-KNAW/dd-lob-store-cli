@@ -16,8 +16,8 @@
 
 package nl.knaw.dans.lobstorecli.config;
 
-import io.dropwizard.core.Configuration;
 import io.dropwizard.client.JerseyClientConfiguration;
+import io.dropwizard.core.Configuration;
 import lombok.Data;
 
 import javax.validation.Valid;
