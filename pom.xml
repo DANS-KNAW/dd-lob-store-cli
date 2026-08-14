@@ -35,7 +35,7 @@
 
     <properties>
         <main-class>nl.knaw.dans.lobstorecli.DdLobStoreCli</main-class>
-        <dd-lob-store-api.version>1.0.0</dd-lob-store-api.version>
+        <dd-lob-store-api.version>1.0.1-SNAPSHOT</dd-lob-store-api.version>
         <command-name>lob-store</command-name>
     </properties>
 
@@ -114,6 +114,21 @@
             <groupId>nl.knaw.dans</groupId>
             <artifactId>dd-lob-store-api</artifactId>
             <version>${dd-lob-store-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

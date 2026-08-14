@@ -23,6 +23,7 @@ import nl.knaw.dans.lib.util.PicocliVersionProvider;
 import nl.knaw.dans.lobstorecli.client.ApiClient;
 import nl.knaw.dans.lobstorecli.client.DefaultApi;
 import nl.knaw.dans.lobstorecli.command.AddTransferCommand;
+import nl.knaw.dans.lobstorecli.command.FlushTransfersCommand;
 import nl.knaw.dans.lobstorecli.command.GetLocationCommand;
 import nl.knaw.dans.lobstorecli.command.GetTransferByHashCommand;
 import nl.knaw.dans.lobstorecli.command.GetTransferCommand;
@@ -58,5 +59,6 @@ public class DdLobStoreCli extends AbstractCommandLineApp<DdLobStoreCliConfig> {
         commandLine.addSubcommand(new GetTransferCommand(api));
         commandLine.addSubcommand(new GetTransferByHashCommand(api));
         commandLine.addSubcommand(new GetLocationCommand(api));
+        commandLine.addSubcommand(new FlushTransfersCommand(api));
     }
 }
