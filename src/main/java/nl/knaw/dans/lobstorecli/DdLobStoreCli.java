@@ -23,6 +23,7 @@ import nl.knaw.dans.lib.util.PicocliVersionProvider;
 import nl.knaw.dans.lobstorecli.client.ApiClient;
 import nl.knaw.dans.lobstorecli.client.DefaultApi;
 import nl.knaw.dans.lobstorecli.command.AddTransferCommand;
+import nl.knaw.dans.lobstorecli.command.FlushTransfersCommand;
 import nl.knaw.dans.lobstorecli.command.GetLocationCommand;
 import nl.knaw.dans.lobstorecli.command.GetTransferByHashCommand;
 import nl.knaw.dans.lobstorecli.command.GetTransferCommand;
@@ -48,15 +49,16 @@ public class DdLobStoreCli extends AbstractCommandLineApp<DdLobStoreCliConfig> {
     public void configureCommandLine(CommandLine commandLine, DdLobStoreCliConfig config) {
         log.debug("Configuring command line");
         DefaultApi api = new ClientProxyBuilder<ApiClient, DefaultApi>()
-                .apiClient(new ApiClient())
-                .defaultApiCtor(DefaultApi::new)
-                .httpClient(config.getHttpClient())
-                .basePath(config.getApiUrl())
-                .build();
+            .apiClientCtor(ApiClient::new)
+            .proxyCtor(DefaultApi::new)
+            .httpClient(config.getHttpClient())
+            .basePath(config.getApiUrl())
+            .build();
 
         commandLine.addSubcommand(new AddTransferCommand(api));
         commandLine.addSubcommand(new GetTransferCommand(api));
         commandLine.addSubcommand(new GetTransferByHashCommand(api));
         commandLine.addSubcommand(new GetLocationCommand(api));
+        commandLine.addSubcommand(new FlushTransfersCommand(api));
     }
 }
