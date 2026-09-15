@@ -30,7 +30,7 @@
 
     <name>DD LOB Store CLI</name>
     <description>CLI for dd-lob-store</description>
-    <url>https://github.com/DANS-KNAW/dd-lob-store-cli</url>
+    <url>https://dans-knaw.github.io/dd-lob-store-cli</url>
     <inceptionYear>2026</inceptionYear>
 
     <scm>
